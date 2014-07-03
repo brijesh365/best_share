@@ -7,6 +7,10 @@ from messages import ARGUMENT_MSG
 from decorator import raise_exception
 
 class BestShare(General):
+    """
+        BestShare calculates bestshare of individual companies.
+
+    """
     def __init__(self, *args, **kwargs):
         """
             Intializes General class with filename, so it can be used for
@@ -22,6 +26,9 @@ class BestShare(General):
             was highest for each company.
 
             NOTE: return is needed to satisfy test_share.py(unit test cases)
+            LOGIC: 
+                Moving column by column and get bestshare for each companies.
+                and return the final dictionary.
         """
         data = self.readfile()
         col_length = len(data[0])
@@ -40,6 +47,11 @@ class BestShare(General):
         return self.companyshares
 
 if __name__ == "__main__":
+    #
+    # Code flow starts from here, call bestshare function and displays
+    # best share for individual companies.
+    #
+
     try:
         if len(sys.argv) != 2:
             raise ArgumentError(ARGUMENT_MSG)

@@ -4,11 +4,17 @@ from messages import HEADER_MSG, VALIDATION_MSG
 from decorator import raise_exception
 
 class General(object):
+    """
+        General class read data from file and validates it.
+    """
     def __init__(self, filename):
         self.filename = filename
 
     @raise_exception
     def readfile(self):
+        """
+            Read and validates file.
+        """
         data = [ row.strip().split(",") for row in open(self.filename) if row != '' ]
         self.validatefile(data)
         return data
